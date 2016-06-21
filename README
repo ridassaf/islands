@@ -1,0 +1,25 @@
+First, all island headers are written to 'sorted-allislands.headers'
+
+Then, run:
+
+python generateNegatives.py sorted-allislands.headers
+
+to get 'negatives.headers' as an output file with random coordinates. 
+
+then run:
+
+python repeatFeatures.py negtives.headers 
+
+to get 'features'
+
+I have created multiple versions of those named negative-features-x
+
+To test, run 
+
+python classify.py positive-features negative-features-x file1 file2 N 
+
+file1 and file2 can be any feature files (my way of creating different versions
+to train and test on different data, for these experiments they can be disregarded). 
+N is the number of lines in file2. 
+
+
