@@ -209,7 +209,7 @@ for row in input:
 	output.write(str(num_direct_local_L) + '\t' + str(num_direct_local_R) + '\t' + str(num_direct_across_L) + '\t' + str(num_direct_across_R) + '\t')
 	output.write(str(num_reverse_local_L) + '\t' + str(num_reverse_local_R) + '\t' + str(num_reverse_across_L) + '\t' + str(num_reverse_across_R) + '\t')
 	output.write(str(max_direct_local_R) + '\t' + str(max_reverse_local_R) + '\t')
-	output.write(str(max_direct_across_R) + '\t' + str(max_reverse_across_R) + '\t' + str(dist_to_integrase) + '\n')
+	output.write(str(max_direct_across_R) + '\t' + str(max_reverse_across_R) + '\n') #'\t' + str(dist_to_integrase) + '\n')
 
 output.close()	
 input.close()

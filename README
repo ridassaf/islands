@@ -1,3 +1,4 @@
+#####################################################################################
 First, all island headers are written to 'sorted-allislands.headers'
 
 Then, run:
@@ -21,5 +22,36 @@ python classify.py positive-features negative-features-x file1 file2 N
 file1 and file2 can be any feature files (my way of creating different versions
 to train and test on different data, for these experiments they can be disregarded). 
 N is the number of lines in file2. 
+#####################################################################################
+Another way is after getting the positive and the negative features using 
+repeatFeatures.py, cut the Start and End away, then use:
+cat features | perl -pe '$_="1\t$_"' > labeled-features
+to label the features, then cat the header followed by the features files to 
+create a combined feature file(many of those in the folder), then use:
 
+python classifang.py combined-features -s 0 -t 0.5 -f 5
 
+to classify using different machine learning algorithms. F stands for fold, s
+is sensitivity, I forgot what t is. 
+
+This also saves a random forrest model that can be loaded later to test.
+#####################################################################################
+singleWindowClassify.py takes a single window features file and classifies. 
+It uses the model previously saved by classifang. 
+
+filterRepeats.py filters repeat in two levels. 
+attLORFinder.py gets repeats before being filtered. An update to repeatFinder.py
+repeatSurfer.py was a logical attempt to get islands out of repeats.
+#####################################################################################
+In Reference Genomes:
+allIslands.headers: contains all islands curated by surfer/mislander. 
+allIslandsHeaders.sh: is the script that got them. 
+count.sh and compare.sh are scripts to get number of islands and compare them.
+download.sh is a script to download genomes given ids. 
+ReferenceGenomes.ids is a file with the reference genomes ids. 
+generateNegatives.py uses sorted-allIslands.headers to generate false islands.
+singleWindowMislanderFeatures: uses negative.headers to generate single window
+	features.
+singleWindowRepeatFeatures: uses allIslands.headers to generate single window
+	features.
+#####################################################################################
